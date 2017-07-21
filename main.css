@@ -1,0 +1,31 @@
+.arrow {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.container {
+	position: relative;
+}
+
+.menu {
+	margin-top: 20px;
+}
+
+#main {
+	width: 50%;
+	float: left;
+}
+
+#registers {
+	width: 50%;
+	float: left;
+}
+
+html,
+body { height: 100%; }
+
+body {
+  display: table;
+  width: 100%;
+}

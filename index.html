@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Papiercomputer</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link href="main.css" rel="stylesheet">
+</head>
+<body>
+
+	<nav class="navbar navbar-light bg-faded" id="navigation">
+  		<a class="navbar-brand" href="#">Papiercomputer</a>
+	</nav>
+
+	<div class="container">
+	<div class="menu">
+	<button type="button" class="btn btn-success" onclick="step();">Step</button>
+	<button type="button" class="btn btn-success" onclick="run();">Run</button>
+	<button type="button" class="btn btn-success" onclick="reset();">Reset</button>
+	Schrittweite: 500ms
+	<!--Status: Aus-->
+	<button type="button" class="btn btn-success" onclick="reload();">Clear</button>
+	<button type="button" class="btn btn-success">Load</button>
+	<button type="button" class="btn btn-success">Save</button>
+	</div>
+	<div class="arrow"><---</div>
+	<table id="main">
+		<thead>
+			<tr>
+				<th>Instruction</th>
+				<th>Address</th>
+				<th>Line-#</th>
+				<th>Instruction-Pointer</th>
+			</tr>
+		</thead>
+
+		<tbody><tr class="instruction">
+			<td class="command_col">
+				<select class="command form-control">
+					<option value=-1 selected="selected"></option>
+  					<option value=0>isz</option>
+  					<option value=1>inc</option>
+  					<option value=2>dec</option>
+  					<option value=3>jmp</option>
+  					<option value=4>stp</option>
+				</select>
+			</td>
+			<td class="address_col">
+				<input type="number" min=0 class="address form-control"/>
+			</td>
+			<td class="line_col">0</td>
+			<td class="pointer_col">&nbsp;</td>
+		</tr><tr class="instruction">
+			<td class="command_col">
+				<select class="command form-control">
+					<option value=-1 selected="selected"></option>
+  					<option value=0>isz</option>
+  					<option value=1>inc</option>
+  					<option value=2>dec</option>
+  					<option value=3>jmp</option>
+  					<option value=4>stp</option>
+				</select>
+			</td>
+			<td class="address_col">
+				<input type="number" min=0 class="address form-control"/>
+			</td>
+			<td class="line_col">1</td>
+			<td class="pointer_col">&nbsp;</td>
+		</tr><tr class="instruction">
+			<td class="command_col">
+				<select class="command form-control">
+					<option value=-1 selected="selected"></option>
+  					<option value=0>isz</option>
+  					<option value=1>inc</option>
+  					<option value=2>dec</option>
+  					<option value=3>jmp</option>
+  					<option value=4>stp</option>
+				</select>
+			</td>
+			<td class="address_col">
+				<input type="number" min=0 class="address form-control"/>
+			</td>
+			<td class="line_col">2</td>
+			<td class="pointer_col">&nbsp;</td>
+		</tr><tr class="instruction">
+			<td class="command_col">
+				<select class="command form-control">
+					<option value=-1 selected="selected"></option>
+  					<option value=0>isz</option>
+  					<option value=1>inc</option>
+  					<option value=2>dec</option>
+  					<option value=3>jmp</option>
+  					<option value=4>stp</option>
+				</select>
+			</td>
+			<td class="address_col">
+				<input type="number" min=0 class="address form-control"/>
+			</td>
+			<td class="line_col">3</td>
+			<td class="pointer_col">&nbsp;</td>
+		</tr><tr class="instruction">
+			<td class="command_col">
+				<select class="command form-control">
+					<option value=-1 selected="selected"></option>
+  					<option value=0>isz</option>
+  					<option value=1>inc</option>
+  					<option value=2>dec</option>
+  					<option value=3>jmp</option>
+  					<option value=4>stp</option>
+				</select>
+			</td>
+			<td class="address_col">
+				<input type="number" min=0 class="address form-control"/>
+			</td>
+			<td class="line_col">4</td>
+			<td class="pointer_col">&nbsp;</td>
+		</tr>
+		</tbody>
+	</table>
+	<table id="registers">
+		<tr><td>Register 0: </td><td><input type="number" min=0 id="reg0" class="register form-control"/></td></tr>
+		<tr><td>Register 1: </td><td><input type="number" min=0 id="reg1" class="register form-control"/></td></tr>
+		<tr><td>Register 2: </td><td><input type="number" min=0 id="reg2" class="register form-control"/></td></tr>
+		<tr><td>Register 3: </td><td><input type="number" min=0 id="reg3" class="register form-control"/></td></tr>
+		<tr><td>Register 4: </td><td><input type="number" min=0 id="reg4" class="register form-control"/></td></tr>
+		<tr><td>Register 5: </td><td><input type="number" min=0 id="reg5" class="register form-control"/></td></tr>
+		<tr><td>Register 6: </td><td><input type="number" min=0 id="reg6" class="register form-control"/></td></tr>
+		<tr><td>Register 7: </td><td><input type="number" min=0 id="reg7" class="register form-control"/></td></tr>
+	</table>
+	<script src="./script.js"></script>
+	</div>
+
+</body>	
+</html>
