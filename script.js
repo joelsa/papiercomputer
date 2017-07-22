@@ -44,8 +44,9 @@ function reload() {
 
 // multi-step
 function run() {
+	stepTime = document.getElementById("delay").value
 	status = 1;
-	timer = setInterval(function(){ step(); }, 500);
+	timer = setInterval(function(){ step(); }, stepTime);
 }
 
 // single-step
