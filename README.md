@@ -1,6 +1,6 @@
 # papiercomputer
 
-Dies ist eine Implementation des Papiercomputers von Wolfgang Beck.
+Dies ist eine Implementation des Papiercomputers von Wolfgang Back.
 
 Es stehen 8 Register zur Verfügung (0-7).
 
