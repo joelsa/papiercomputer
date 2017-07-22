@@ -196,3 +196,29 @@ function updateRegisterFields() {
 		registerElements[i].value = registers[i]
 	}
 }
+
+function handleFileSelect(evt) {
+    var file = evt.target.files[0]; // FileList object
+
+    var fr = new FileReader();
+    fr.onload = parse;
+    fr.readAsText(file);
+
+    function parse()
+    {
+    	lines = fr.result.split("\n")
+    	if ((lines.length-1) > 5) {
+    		expandFields(numberOfInstructionFields, ((lines.length-1) - numberOfInstructionFields + 5))
+    		numberOfInstructionFields = lines.length
+    	}
+
+    	for (var i = 0; i < lines.length-1; i++) {
+    		commands = lines[i].split(" ")
+    		program[i] = [parseInt(commands[0]), parseInt(commands[1])]
+    		document.getElementsByClassName("command")[i].value = commands[0]
+    		document.getElementsByClassName("address")[i].value = commands[1]
+    	}
+    }
+}
+
+document.getElementById('file-input').addEventListener('change', handleFileSelect, false);
