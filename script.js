@@ -27,6 +27,7 @@ updateRegisterFields()
 
 setUpListeners(document.getElementsByClassName('address'))
 setUpListeners(document.getElementsByClassName('command'))
+document.getElementById('file-input').addEventListener('change', handleFileSelect, false);
 
 
 // ui-functions
@@ -207,9 +208,9 @@ function handleFileSelect(evt) {
     function parse()
     {
     	lines = fr.result.split("\n")
-    	if ((lines.length-1) > 5) {
-    		expandFields(numberOfInstructionFields, ((lines.length-1) - numberOfInstructionFields + 5))
-    		numberOfInstructionFields = lines.length
+    	if ((((lines.length-1) - numberOfInstructionFields + 4) > 0)) {
+    		expandFields(numberOfInstructionFields, ((lines.length-1) - numberOfInstructionFields + 4))
+    		numberOfInstructionFields += ((lines.length-1) - numberOfInstructionFields + 4)
     	}
 
     	for (var i = 0; i < lines.length-1; i++) {
@@ -221,4 +222,12 @@ function handleFileSelect(evt) {
     }
 }
 
-document.getElementById('file-input').addEventListener('change', handleFileSelect, false);
+function download() {
+	let content = ""
+	for (var i = 0; i < program.length-4; i++) {
+		content += (program[i][0] + " " + program[i][1])
+		content += "\n"
+	}
+	uriContent = "data:application/octet-stream," + encodeURIComponent(content)
+	newWindow = window.open(uriContent, "_self");
+}
