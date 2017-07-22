@@ -13,9 +13,12 @@
 	<div class="container">
 	<div class="menu">
 	<table><tr>
-	<td><button type="button" class="btn btn-success" onclick="step();">Step</button></td>
-	<td><button type="button" class="btn btn-success" onclick="run();">Run</button></td>
-	<td><button type="button" class="btn btn-success" onclick="reset();">Reset</button></td>
+	<td><button type="button" class="btn btn-success" id="stepButton" onclick="step();">Step</button></td>
+	<td><button type="button" class="btn btn-success" id="runButton" onclick="run();">Run</button></td>
+	<td><button type="button" class="btn btn-success" id="pauseButton" onclick="pause();">Pause</button></td>
+	<td><button type="button" class="btn btn-success" id="resumeButton" onclick="resume();">Resume</button></td>
+	<td><button type="button" class="btn btn-success" id="stopButton" onclick="stop();">Stop</button></td>
+	<td><button type="button" class="btn btn-success" id="resetButton" onclick="reset();">Reset</button></td>
 	<td><label>Schrittweite:</label></td>
 	<td><input type="number" min=0 value=500 id="delay" class="form-control" style="width: 150px;" /></td>
 	<td>ms</td>

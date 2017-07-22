@@ -24,6 +24,11 @@ let timer
 updateInstructionPointer()
 setUpRegisterListeners()
 updateRegisterFields()
+document.getElementById("stepButton").disabled = false
+document.getElementById("runButton").disabled = false
+document.getElementById("resumeButton").disabled = true
+document.getElementById("stopButton").disabled = true
+document.getElementById("pauseButton").disabled = true
 
 setUpListeners(document.getElementsByClassName('address'))
 setUpListeners(document.getElementsByClassName('command'))
@@ -44,6 +49,11 @@ function reload() {
 
 // multi-step
 function run() {
+	document.getElementById("stepButton").disabled = true
+	document.getElementById("runButton").disabled = true
+	document.getElementById("resumeButton").disabled = true
+	document.getElementById("stopButton").disabled = false
+	document.getElementById("pauseButton").disabled = false
 	stepTime = document.getElementById("delay").value
 	status = 1;
 	timer = setInterval(function(){ step(); }, stepTime);
@@ -51,9 +61,17 @@ function run() {
 
 // single-step
 function step() {
+	if (status == states.paused) {
+		return false
+	}
 	if (instructionPointer >= program.length || instructionPointer+1 === numberOfInstructionFields) {
-		status = 4
+		status = states.failure
 		clearInterval(timer)
+		document.getElementById("stepButton").disabled = false
+		document.getElementById("runButton").disabled = false
+		document.getElementById("resumeButton").disabled = true
+		document.getElementById("stopButton").disabled = true
+		document.getElementById("pauseButton").disabled = true
 		return false
 	}
 	const [instruction, register] = program[instructionPointer]
@@ -85,7 +103,12 @@ function step() {
 			instructionCounter++
 			break
 		case instructions.stp:
-			status = 3
+			status = states.stopped
+			document.getElementById("stepButton").disabled = false
+			document.getElementById("runButton").disabled = false
+			document.getElementById("resumeButton").disabled = true
+			document.getElementById("stopButton").disabled = true
+			document.getElementById("pauseButton").disabled = true
 			clearInterval(timer)
 			return false
 			break
@@ -231,4 +254,32 @@ function download() {
 	}
 	uriContent = "data:application/octet-stream," + encodeURIComponent(content)
 	newWindow = window.open(uriContent, "_self");
+}
+
+function pause() {
+	status = states.paused
+	document.getElementById("stepButton").disabled = true
+	document.getElementById("runButton").disabled = true
+	document.getElementById("resumeButton").disabled = false
+	document.getElementById("stopButton").disabled = false
+	document.getElementById("pauseButton").disabled = true
+}
+
+function resume() {
+	status = states.running
+	document.getElementById("stepButton").disabled = true
+	document.getElementById("runButton").disabled = true
+	document.getElementById("resumeButton").disabled = true
+	document.getElementById("stopButton").disabled = false
+	document.getElementById("pauseButton").disabled = false
+}
+
+function stop() {
+	status = states.stopped
+	clearInterval(timer)
+	document.getElementById("stepButton").disabled = false
+	document.getElementById("runButton").disabled = false
+	document.getElementById("resumeButton").disabled = true
+	document.getElementById("stopButton").disabled = true
+	document.getElementById("pauseButton").disabled = true
 }
