@@ -25,8 +25,8 @@ updateInstructionPointer()
 setUpRegisterListeners()
 updateRegisterFields()
 
-setUpListeners(document.getElementsByTagName('input'))
-setUpListeners(document.getElementsByTagName('select'))
+setUpListeners(document.getElementsByClassName('address'))
+setUpListeners(document.getElementsByClassName('command'))
 
 
 // ui-functions
