@@ -116,7 +116,7 @@ function expandFields(index, diff) {
 		// Add some text to the new cells:
 		cell1.innerHTML = "<select class='command form-control'><option value=-1 selected='selected'></option><option value=0>isz</option><option value=1>inc</option><option value=2>dec</option><option value=3>jmp</option><option value=4>stp</option></select>"
 		cell2.innerHTML = "<input type='number' min=0 class='address form-control'/>"
-		cell3.innerHTML = numberOfInstructionFields
+		cell3.innerHTML = numberOfInstructionFields-1
 		cell4.innerHTML = "&nbsp;"
 
 		setUpNewListeners(row)
