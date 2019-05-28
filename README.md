@@ -1,10 +1,12 @@
 # papiercomputer
 
-Dies ist eine Implementation des Papiercomputers von Wolfgang Back.
+This is an implementation of the so-called Papiercomputer von Wolfgang Back.
 
-Es stehen 8 Register zur Verfügung (0-7).
+See here for further information: https://en.wikipedia.org/wiki/WDR_paper_computer
 
-Außerdem stehen die folgenden Befehle zur Verfügung:
+There are 8 available registers (0-7).
+
+In addition the following commands can be used:
 
 | Command  | Description | Address Type |
 | --- | --- | --- |
